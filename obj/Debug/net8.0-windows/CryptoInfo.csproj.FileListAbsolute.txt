@@ -18,3 +18,7 @@ C:\Users\stars\Desktop\CryptoInfo\obj\Debug\net8.0-windows\CryptoInfo.genruntime
 C:\Users\stars\Desktop\CryptoInfo\obj\Debug\net8.0-windows\ref\CryptoInfo.dll
 C:\Users\stars\Desktop\CryptoInfo\obj\Debug\net8.0-windows\index.g.cs
 C:\Users\stars\Desktop\CryptoInfo\obj\Debug\net8.0-windows\index.baml
+C:\Users\stars\Desktop\CryptoInfo\obj\Debug\net8.0-windows\CryptoInfo.sourcelink.json
+C:\Users\stars\Desktop\CryptoInfo\bin\Debug\net8.0-windows\Newtonsoft.Json.dll
+C:\Users\stars\Desktop\CryptoInfo\obj\Debug\net8.0-windows\CryptoInfo.csproj.AssemblyReference.cache
+C:\Users\stars\Desktop\CryptoInfo\obj\Debug\net8.0-windows\CryptoInfo.csproj.Up2Date

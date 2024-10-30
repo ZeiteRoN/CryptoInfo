@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "BoKm6TyM4Ko=",
+  "dgSpecHash": "9oM7CfO5AAo=",
   "success": true,
   "projectFilePath": "C:\\Users\\stars\\Desktop\\CryptoInfo\\CryptoInfo.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\stars\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+  ],
   "logs": []
 }

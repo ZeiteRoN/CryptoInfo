@@ -2,13 +2,17 @@ namespace CryptoInfo.Models
 {
     public class Market
     {
-        public int id { get; set; }
+        public int exchangeId { get; set; }
     
-        public string name { get; set; }
+        public string baseId { get; set; }
     
-        public decimal volume { get; set; }
+        public string baseSymbol { get; set; }
     
-        public string marketUrl { get; set; }
+        public decimal volumeUsd24Hr { get; set; }
+        
+        public decimal priceUsd { get; set; }
+        
+        public decimal volumePercent { get; set; }
     }
 }
 

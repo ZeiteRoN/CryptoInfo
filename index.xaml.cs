@@ -8,6 +8,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using CryptoInfo.Services;
 
 namespace CryptoInfo
 {
@@ -19,6 +20,8 @@ namespace CryptoInfo
         public index()
         {
             InitializeComponent();
+            CryptoService sevice = new CryptoService();
+            sevice.GetCryptoCurrencies();
         }
     }
 }

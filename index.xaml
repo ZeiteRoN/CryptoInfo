@@ -9,5 +9,37 @@
     xmlns:local="clr-namespace:CryptoInfo"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <Grid />
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="85" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <StackPanel
+            Background="#151c24"
+            Grid.Column="0"
+            Orientation="Vertical">
+            <Button
+                Background="Transparent"
+                BorderThickness="0"
+                FontSize="24"
+                Foreground="FloralWhite"
+                HorizontalContentAlignment="Center">
+                Home
+            </Button>
+        </StackPanel>
+        <StackPanel
+            Background="#202a36"
+            Grid.Column="1"
+            Orientation="Vertical">
+            <StackPanel Height="40">
+                <Label
+                    FontSize="24"
+                    Foreground="FloralWhite"
+                    HorizontalContentAlignment="Center">
+                    Top 10 Currencies
+                </Label>
+            </StackPanel>
+        </StackPanel>
+
+    </Grid>
 </Window>
