@@ -1,7 +1,7 @@
 ﻿<Window
     Height="600"
     Title="Home"
-    Width="1000"
+    Width="700"
     mc:Ignorable="d"
     x:Class="CryptoInfo.index"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -9,6 +9,26 @@
     xmlns:local="clr-namespace:CryptoInfo"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Window.Resources>
+        <Style TargetType="Label" x:Key="HeadingLabels">
+            <Setter Property="Foreground" Value="Bisque" />
+            <Setter Property="FontSize" Value="24" />
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+        </Style>
+        <Style TargetType="DataGridColumnHeader" x:Key="HeaderStyle">
+            <Setter Property="Background" Value="#202a36" />
+            <Setter Property="Foreground" Value="DarkBlue" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="" Value="Bold" />
+        </Style>
+        <Style TargetType="DataGridCell" x:Key="CellStyle">
+            <Setter Property="Background" Value="#202a36" />
+            <Setter Property="Foreground" Value="DarkBlue" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="FontWeight" Value="Bold" />
+        </Style>
+    </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="85" />
@@ -32,13 +52,22 @@
             Grid.Column="1"
             Orientation="Vertical">
             <StackPanel Height="40">
-                <Label
-                    FontSize="24"
-                    Foreground="FloralWhite"
-                    HorizontalContentAlignment="Center">
-                    Top 10 Currencies
-                </Label>
+                <Label Content="Top 10 Currencies" Style="{StaticResource HeadingLabels}" />
             </StackPanel>
+            <StackPanel />
+            <DataGrid
+                AutoGenerateColumns="False"
+                Background="#202a36"
+                HeadersVisibility="Column"
+                Height="*"
+                Width="*">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Name}" Header="Rank" />
+                    <DataGridTextColumn Binding="{Binding Name}" Header="Symbol" />
+                    <DataGridTextColumn Binding="{Binding Name}" Header="Name" />
+                    <DataGridTextColumn Binding="{Binding Name}" Header="Price" />
+                </DataGrid.Columns>
+            </DataGrid>
         </StackPanel>
 
     </Grid>
