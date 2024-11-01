@@ -9,19 +9,19 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using CryptoInfo.Services;
+using CryptoInfo.ViewModels;
 
 namespace CryptoInfo
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class index : Window
+    public partial class MainView : Window
     {
-        public index()
+        public MainView()
         {
             InitializeComponent();
-            CryptoService sevice = new CryptoService();
-            sevice.GetCryptoCurrencies();
+            DataContext = new HomeVm();
         }
     }
 }
