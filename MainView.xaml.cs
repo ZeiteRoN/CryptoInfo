@@ -8,6 +8,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using CryptoInfo.MVVM.Views;
 using CryptoInfo.Services;
 using CryptoInfo.ViewModels;
 
@@ -21,7 +22,18 @@ namespace CryptoInfo
         public MainView()
         {
             InitializeComponent();
+            MainContent.Content = new HomeView();
             DataContext = new HomeVm();
+        }
+
+        private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
+        {
+            MainContent.Content = new HomeView();
+        }
+
+        private void ButtonBase_OnClick1(object sender, RoutedEventArgs e)
+        {
+            MainContent.Content = new DatailedCurrInfo();
         }
     }
 }

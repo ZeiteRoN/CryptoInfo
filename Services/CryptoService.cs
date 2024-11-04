@@ -45,6 +45,19 @@ namespace CryptoInfo.Services
             }
             return currencies;
         }
+
+        public async Task<CryptoCurrency> GetCryptoCurrencyAsync(string id)
+        {
+            var currency = new CryptoCurrency();
+            var response = await _httpClient.GetAsync($"assets?id={id}");
+            response.EnsureSuccessStatusCode();
+            
+            string content = await response.Content.ReadAsStringAsync();
+            JObject json = JObject.Parse(content);
+            
+            currency.id = json["id"]?.ToString();
+            return currency;
+        }
         
         public async Task<List<Market>> GetMarketsForCurrency(string cryptoId)
         {

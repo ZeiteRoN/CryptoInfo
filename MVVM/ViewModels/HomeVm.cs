@@ -9,11 +9,12 @@ namespace CryptoInfo.ViewModels
     public class HomeVm: INotifyPropertyChanged
     {
         private readonly CryptoService _service;
-        public ObservableCollection<CryptoCurrency> Cryptos { get; set; } = new ObservableCollection<CryptoCurrency>();
+        public ObservableCollection<CryptoCurrency> Cryptos { get; set; }
 
         public HomeVm()
         {
             _service = new CryptoService();
+            Cryptos = new ObservableCollection<CryptoCurrency>();
             LoadTopCryptos();
         }
 

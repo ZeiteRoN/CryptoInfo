@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CryptoInfo")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+501d326af6f7a714a78e9661c115d04fbc5e41cd")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+38d00c9d50c539eaf348b914dd1b3610a406935b")]
 [assembly: System.Reflection.AssemblyProductAttribute("CryptoInfo")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CryptoInfo")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

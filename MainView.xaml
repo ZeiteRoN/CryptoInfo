@@ -9,75 +9,30 @@
     xmlns:local="clr-namespace:CryptoInfo"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <Window.Resources>
-        <Style TargetType="Label" x:Key="HeadingLabels">
-            <Setter Property="Foreground" Value="Bisque" />
-            <Setter Property="FontSize" Value="24" />
-            <Setter Property="HorizontalContentAlignment" Value="Center" />
-        </Style>
-        <Style TargetType="DataGrid">
-            <Setter Property="Background" Value="Transparent" />
-        </Style>
-    </Window.Resources>
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="85" />
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
-        <StackPanel
-            Background="#151c24"
-            Grid.Column="0"
-            Orientation="Vertical">
-            <Button
-                Background="Transparent"
-                BorderThickness="0"
-                FontSize="24"
-                Foreground="FloralWhite"
-                HorizontalContentAlignment="Center">
-                Home
-            </Button>
-        </StackPanel>
-        <StackPanel
-            Background="#202a36"
-            Grid.Column="1"
-            Orientation="Vertical">
-            <StackPanel Height="40">
-                <Label Content="Top 10 Currencies" Style="{StaticResource HeadingLabels}" />
+    <Border Background="#171f2b">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <StackPanel>
+                <Button
+                    Click="ButtonBase_OnClick"
+                    Content="Home"
+                    Height="32"
+                    Margin="0,5"
+                    VerticalAlignment="Top" />
+                <StackPanel>
+                    <Label Content="Search" Foreground="Wheat" />
+                    <TextBox Margin="0" />
+                    <Button Content="Search" />
+                </StackPanel>
             </StackPanel>
-            <StackPanel />
-            <DataGrid
-                AutoGenerateColumns="False"
-                CanUserAddRows="False"
-                ItemsSource="{Binding Cryptos}"
-                Margin="10"
-                Style="{StaticResource {x:Type DataGrid}}">
-                <DataGrid.Resources>
-                    <Style TargetType="DataGridCell">
-                        <Setter Property="Background" Value="Transparent" />
-                        <Setter Property="Foreground" Value="#eb5d21" />
-                        <Setter Property="FontSize" Value="14" />
-                        <Style.Triggers>
-                            <Trigger Property="IsSelected" Value="True">
-                                <Setter Property="Background" Value="Transparent" />
-                                <Setter Property="Foreground" Value="White" />
-                            </Trigger>
-                        </Style.Triggers>
-                    </Style>
-                    <Style TargetType="DataGridColumnHeader">
-                        <Setter Property="Background" Value="Transparent" />
-                        <Setter Property="Foreground" Value="#eb5d21" />
-                        <Setter Property="Margin" Value="10" />
-                    </Style>
-                </DataGrid.Resources>
-                <DataGrid.Columns>
-                    <DataGridTextColumn Binding="{Binding rank}" Header="Rank" />
-                    <DataGridTextColumn Binding="{Binding symbol}" Header="Symbol" />
-                    <DataGridTextColumn Binding="{Binding name, StringFormat=C}" Header="Name" />
-                    <DataGridTextColumn Binding="{Binding priceUsd, StringFormat=C}" Header="Price (USD)" />
-                    <DataGridTextColumn Binding="{Binding volumeUsd24Hr, StringFormat=C}" Header="24h Volume (USD)" />
-                </DataGrid.Columns>
-            </DataGrid>
-        </StackPanel>
 
-    </Grid>
+
+            <StackPanel Grid.Column="1">
+                <Frame NavigationUIVisibility="Hidden" x:Name="MainContent" />
+            </StackPanel>
+        </Grid>
+    </Border>
 </Window>
