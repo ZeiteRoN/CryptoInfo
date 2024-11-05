@@ -2,7 +2,10 @@
     StartupUri="MainView.xaml"
     x:Class="CryptoInfo.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:commands="clr-namespace:CryptoInfo.MVVM.Commands"
     xmlns:local="clr-namespace:CryptoInfo"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <Application.Resources />
+    <Application.Resources>
+        <commands:NullToVisibilityConverter x:Key="NullToVisibilityConverter" />
+    </Application.Resources>
 </Application>

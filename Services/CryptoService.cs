@@ -48,14 +48,29 @@ namespace CryptoInfo.Services
 
         public async Task<CryptoCurrency> GetCryptoCurrencyAsync(string id)
         {
-            var currency = new CryptoCurrency();
-            var response = await _httpClient.GetAsync($"assets?id={id}");
+            var response = await _httpClient.GetAsync($"assets/{id}");
             response.EnsureSuccessStatusCode();
-            
+
             string content = await response.Content.ReadAsStringAsync();
             JObject json = JObject.Parse(content);
-            
-            currency.id = json["id"]?.ToString();
+
+            var data = json["data"] as JObject;
+
+            var currency = new CryptoCurrency
+            {
+                id = data["id"]?.ToString(),
+                rank = data["rank"]?.ToString(),
+                symbol = data["symbol"]?.ToString(),
+                name = data["name"]?.ToString(),
+                supply = (decimal?)data["supply"] ?? 0,
+                maxSupply = (decimal?)data["maxSupply"] ?? 0,
+                marketCapUsd = (decimal?)data["marketCapUsd"] ?? 0,
+                volumeUsd24Hr = (decimal?)data["volumeUsd24Hr"] ?? 0,
+                priceUsd = (decimal?)data["priceUsd"] ?? 0,
+                changePercent24Hr = (decimal?)data["changePercent24Hr"] ?? 0,
+                vwap24Hr = (decimal?)data["vwap24Hr"] ?? 0,
+            };
+            Console.WriteLine(currency.id);
             return currency;
         }
         

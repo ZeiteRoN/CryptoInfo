@@ -6,12 +6,12 @@ using CryptoInfo.Services;
 
 namespace CryptoInfo.ViewModels
 {
-    public class HomeVm: INotifyPropertyChanged
+    public class HomeViewModel: INotifyPropertyChanged
     {
         private readonly CryptoService _service;
         public ObservableCollection<CryptoCurrency> Cryptos { get; set; }
 
-        public HomeVm()
+        public HomeViewModel()
         {
             _service = new CryptoService();
             Cryptos = new ObservableCollection<CryptoCurrency>();

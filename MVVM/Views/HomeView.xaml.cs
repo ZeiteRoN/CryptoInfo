@@ -9,6 +9,6 @@ public partial class HomeView : Page
     public HomeView()
     {
         InitializeComponent();
-        DataContext = new HomeVm();
+        DataContext = new HomeViewModel();
     }
 }
