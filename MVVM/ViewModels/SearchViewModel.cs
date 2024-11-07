@@ -1,3 +1,4 @@
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
@@ -11,6 +12,7 @@ public class SearchViewModel : INotifyPropertyChanged
 {
     private readonly CryptoService _service;
     private CryptoCurrency _selectedCryptocurrency;
+    public ObservableCollection<Market> Markets { get; set; } = new ObservableCollection<Market>();
     private string _searchQuery;
 
     public SearchViewModel()
@@ -46,8 +48,16 @@ public class SearchViewModel : INotifyPropertyChanged
         if (!string.IsNullOrWhiteSpace(SearchQuery))
         {
             SelectedCryptocurrency = await _service.GetCryptoCurrencyAsync(SearchQuery.ToLower());
+            if (SelectedCryptocurrency != null)
+            {
+                var markets = await _service.GetMarketsForCurrency(SelectedCryptocurrency.id);
+
+                foreach (var market in markets)
+                {
+                    Markets.Add(market);
+                }
+            }
         }
-        Console.WriteLine($"Name: {SelectedCryptocurrency.name}, Price: {SelectedCryptocurrency.priceUsd}");
     }
 
     public event PropertyChangedEventHandler PropertyChanged;

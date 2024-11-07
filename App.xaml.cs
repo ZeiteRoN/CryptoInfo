@@ -9,6 +9,12 @@ namespace CryptoInfo
     /// </summary>
     public partial class App : Application
     {
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            var lang = CryptoInfo.Properties.Settings.Default.languageCode;
+            Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(lang);
+            base.OnStartup(e);
+        }
     }
 
 }

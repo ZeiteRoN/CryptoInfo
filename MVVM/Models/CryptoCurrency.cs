@@ -23,7 +23,5 @@
         public decimal changePercent24Hr { get; set; }
         
         public decimal vwap24Hr { get; set; }
-        
-        public List<Market> markets {get;set;}
     }
 }

@@ -68,7 +68,7 @@ namespace CryptoInfo.Services
                 volumeUsd24Hr = (decimal?)data["volumeUsd24Hr"] ?? 0,
                 priceUsd = (decimal?)data["priceUsd"] ?? 0,
                 changePercent24Hr = (decimal?)data["changePercent24Hr"] ?? 0,
-                vwap24Hr = (decimal?)data["vwap24Hr"] ?? 0,
+                vwap24Hr = (decimal?)data["vwap24Hr"] ?? 0
             };
             Console.WriteLine(currency.id);
             return currency;
@@ -77,7 +77,7 @@ namespace CryptoInfo.Services
         public async Task<List<Market>> GetMarketsForCurrency(string cryptoId)
         {
             var currencyMarkets = new List<Market>();
-            var response = await _httpClient.GetAsync($"assets/{cryptoId}/markets)");
+            var response = await _httpClient.GetAsync($"assets/{cryptoId}/markets");
             response.EnsureSuccessStatusCode();
             
             string content = await response.Content.ReadAsStringAsync();
@@ -87,12 +87,12 @@ namespace CryptoInfo.Services
             {
                 currencyMarkets.Add(new Market
                 {
-                    exchangeId = (int)item["exchangeId"],
+                    exchangeId = item["exchangeId"].ToString(),
                     baseId = item["baseId"].ToString(),
                     baseSymbol = item["baseSymbol"].ToString(),
-                    volumeUsd24Hr = (decimal)item["volumeUsd24Hr"],
-                    priceUsd = (decimal)item["priceUsd"],
-                    volumePercent = (decimal)item["volumePercent"],
+                    volumeUsd24Hr = item["volumeUsd24Hr"].ToString(),
+                    priceUsd = item["priceUsd"].ToString(),
+                    volumePercent = item["volumePercent"].ToString(),
                 });
             }
             return currencyMarkets;

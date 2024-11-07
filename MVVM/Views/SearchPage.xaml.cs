@@ -1,22 +1,23 @@
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Navigation;
 using CryptoInfo.MVVM.ViewModels;
 
 namespace CryptoInfo.MVVM.Views;
 
-public partial class SearchWindow : Window
+public partial class SearchPage : Page
 {
     private SearchViewModel _viewModel;
 
-    public SearchWindow()
+    public SearchPage()
     {
         InitializeComponent();
         _viewModel = new SearchViewModel();
         DataContext = _viewModel;
     }
 
-    private void returnToMainWindow_Click(object sender, RoutedEventArgs e)
+    private void NavigateToMainPage_Click(object sender, RoutedEventArgs e)
     {
-        this.Close();
+        NavigationService.Navigate(new HomeView());
     }
 }

@@ -1,4 +1,6 @@
-﻿using System.Text;
+﻿using System.Globalization;
+using System.Resources;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -20,23 +22,27 @@ namespace CryptoInfo
     /// </summary>
     public partial class MainView : Window
     {
+        private bool _isLightTheme = true;
         public MainView()
         {
             InitializeComponent();
-            DataContext = new HomeViewModel();
+            MainFrame.Content = new HomeView();
         }
 
-        private void OpenSearchWindow_Click(object sender, RoutedEventArgs e)
+        private void ToggleButton_OnChecked(object sender, RoutedEventArgs e)
         {
-            // Приховуємо MainWindow
-            this.Hide();
+            _isLightTheme = !_isLightTheme;
+            string newThemePath = _isLightTheme ? "Resources/Themes/LightTheme.xaml" : "Resources/Themes/DarkTheme.xaml";
+            var newTheme = (ResourceDictionary)Application.LoadComponent(new Uri(newThemePath, UriKind.Relative));
+            Application.Current.Resources.MergedDictionaries.RemoveAt(0);
+            Application.Current.Resources.MergedDictionaries.Add(newTheme);
+        }
 
-            // Створюємо і відкриваємо SearchWindow
-            var searchWindow = new SearchWindow();
-            
-            searchWindow.Closed += (s, args) => this.Show();
-            
-            searchWindow.Show();
+        private void Selector_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (LanguageBox.SelectedIndex == 0) Properties.Settings.Default.languageCode = "en-US";
+            else Properties.Settings.Default.languageCode = "uk-UA";
+            Properties.Settings.Default.Save();
         }
     }
 }

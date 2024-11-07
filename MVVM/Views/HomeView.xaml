@@ -1,6 +1,5 @@
 <Page
-    Background="#171f2b"
-    Height="450"
+    Height="400"
     Title="Home"
     Width="600"
     mc:Ignorable="d"
@@ -9,42 +8,34 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:CryptoInfo"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:p="clr-namespace:CryptoInfo.Resources.LanguagePacks"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Page.Resources>
-        <Style TargetType="GridViewColumnHeader" x:Key="HeadersStyle">
-            <Setter Property="Background" Value="Transparent" />
-            <Setter Property="Foreground" Value="Wheat" />
-            <Setter Property="BorderThickness" Value="0" />
-            <Setter Property="Padding" Value="5" />
-            <Setter Property="MinWidth" Value="145" />
-        </Style>
-        <Style TargetType="ListViewItem">
-            <Setter Property="BorderThickness" Value="0" />
-            <Setter Property="Padding" Value="5" />
+        <Style TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{DynamicResource LabelColor}" />
         </Style>
     </Page.Resources>
-    <ListView
-        Background="Transparent"
-        BorderThickness="0"
-        ItemsSource="{Binding Cryptos}">
-        <ListView.ItemContainerStyle>
-            <Style TargetType="ListViewItem">
-                <Setter Property="Background" Value="Transparent" />
-                <Setter Property="Foreground" Value="Wheat" />
-                <Style.Triggers>
-                    <Trigger Property="ItemsControl.AlternationIndex" Value="1">
-                        <Setter Property="Background" Value="White" />
-                    </Trigger>
-                </Style.Triggers>
-            </Style>
-        </ListView.ItemContainerStyle>
-        <ListView.View>
-            <GridView ColumnHeaderContainerStyle="{StaticResource HeadersStyle}">
-                <GridViewColumn DisplayMemberBinding="{Binding rank}" Header="Rank" />
-                <GridViewColumn DisplayMemberBinding="{Binding symbol}" Header="Symbol" />
-                <GridViewColumn DisplayMemberBinding="{Binding name}" Header="Name" />
-                <GridViewColumn DisplayMemberBinding="{Binding priceUsd}" Header="Price" />
-            </GridView>
-        </ListView.View>
-    </ListView>
+    <StackPanel Margin="20,0,20,20">
+        <StackPanel>
+            <TextBlock FontSize="24" HorizontalAlignment="Center" />
+            <Button
+                Click="NavigateToSearchPage_Click"
+                Content="Search currency"
+                Margin="0,20"
+                Width="200" />
+            <ListView
+                Background="{DynamicResource PageBackground}"
+                BorderThickness="0"
+                ItemsSource="{Binding Cryptos}">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn DisplayMemberBinding="{Binding rank}" Header="Rank" />
+                        <GridViewColumn DisplayMemberBinding="{Binding symbol}" Header="Symbol" />
+                        <GridViewColumn DisplayMemberBinding="{Binding name}" Header="Name" />
+                        <GridViewColumn DisplayMemberBinding="{Binding priceUsd}" Header="Price (USD)" />
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </StackPanel>
+    </StackPanel>
 </Page>

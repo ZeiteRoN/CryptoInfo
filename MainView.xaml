@@ -1,4 +1,5 @@
 ﻿<Window
+    Background="{DynamicResource PageBackground}"
     Height="600"
     Title="Home"
     Width="700"
@@ -8,42 +9,74 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:CryptoInfo"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:p="clr-namespace:CryptoInfo.Resources.LanguagePacks"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <StackPanel Margin="20">
-        <TextBlock
-            FontSize="24"
-            HorizontalAlignment="Center"
-            Text="Top 10 Cryptocurrencies" />
-
-        <Button
-            Click="OpenSearchWindow_Click"
-            Content="Open Search Window"
-            Margin="0,10"
-            Width="200" />
-
-        <ListView
-            Background="Transparent"
-            BorderThickness="0"
-            ItemsSource="{Binding Cryptos}">
-            <ListView.ItemContainerStyle>
-                <Style TargetType="ListViewItem">
-                    <Setter Property="Background" Value="Transparent" />
-                    <Setter Property="Foreground" Value="Wheat" />
-                    <Style.Triggers>
-                        <Trigger Property="ItemsControl.AlternationIndex" Value="1">
-                            <Setter Property="Background" Value="White" />
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-            </ListView.ItemContainerStyle>
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn DisplayMemberBinding="{Binding rank}" Header="Rank" />
-                    <GridViewColumn DisplayMemberBinding="{Binding symbol}" Header="Symbol" />
-                    <GridViewColumn DisplayMemberBinding="{Binding name}" Header="Name" />
-                    <GridViewColumn DisplayMemberBinding="{Binding priceUsd}" Header="Price" />
-                </GridView>
-            </ListView.View>
-        </ListView>
-    </StackPanel>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal">
+            <StackPanel Width="350">
+                <Label
+                    Content="{x:Static p:Languages.logoText}"
+                    FontSize="30"
+                    Foreground="{DynamicResource LabelColor}" />
+            </StackPanel>
+            <StackPanel Width="350">
+                <ToggleButton
+                    Checked="ToggleButton_OnChecked"
+                    Height="25"
+                    IsChecked="True"
+                    Unchecked="ToggleButton_OnChecked"
+                    Width="50">
+                    <ToggleButton.Template>
+                        <ControlTemplate>
+                            <Border
+                                BorderBrush="White"
+                                BorderThickness="1"
+                                CornerRadius="10"
+                                Height="25"
+                                Width="50"
+                                x:Name="SwitchBorder">
+                                <Border
+                                    Background="White"
+                                    CornerRadius="10"
+                                    Height="15"
+                                    HorizontalAlignment="Right"
+                                    Margin="4,0"
+                                    Width="15"
+                                    x:Name="SwitchShape">
+                                    <Border.Effect>
+                                        <DropShadowEffect Opacity="0.8" />
+                                    </Border.Effect>
+                                </Border>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="ToggleButton.IsChecked" Value="True">
+                                    <Setter Property="HorizontalAlignment" TargetName="SwitchShape" Value="Right" />
+                                    <Setter Property="Background" TargetName="SwitchShape" Value="CornflowerBlue" />
+                                </Trigger>
+                                <Trigger Property="ToggleButton.IsChecked" Value="False">
+                                    <Setter Property="HorizontalAlignment" TargetName="SwitchShape" Value="Left" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </ToggleButton.Template>
+                </ToggleButton>
+                <ComboBox
+                    Name="LanguageBox"
+                    SelectionChanged="Selector_OnSelectionChanged"
+                    Width="50">
+                    <ComboBoxItem Content="EN" Tag="en" />
+                    <ComboBoxItem Content="UA" Tag="ua" />
+                </ComboBox>
+            </StackPanel>
+            <StackPanel />
+        </StackPanel>
+        <Frame
+            Grid.Row="1"
+            NavigationUIVisibility="Hidden"
+            x:Name="MainFrame" />
+    </Grid>
 </Window>
