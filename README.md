@@ -1,6 +1,6 @@
 In this project was realized next functionality:
 
--Displaying Top 10 Cryptocurrencies returned by CoinCap API
+-Displaying Top 10 Cryptocurrencies returned by CoinCap API (on project start you need to wait for loading currencies cause of slow speed of API's response)
 
 -Searching Cryptocurrencies by its name;
 
