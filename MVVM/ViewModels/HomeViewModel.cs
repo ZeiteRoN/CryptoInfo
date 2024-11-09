@@ -19,8 +19,11 @@ public class HomeViewModel : INotifyPropertyChanged
         get => _baseCurrency;
         set
         {
-            _baseCurrency = value;
-            OnPropertyChanged();
+            if (_baseCurrency != value)
+            {
+                _baseCurrency = value;
+                OnPropertyChanged();
+            }
         }
     }
 
@@ -30,10 +33,38 @@ public class HomeViewModel : INotifyPropertyChanged
         get => _targetCurrency;
         set
         {
-            _targetCurrency = value;
+            if (_targetCurrency != value)
+            {
+                _targetCurrency = value;
+                OnPropertyChanged();
+            }
+        }
+    }
+    
+    private CryptoCurrency _selectedBaseCurrency;
+    public CryptoCurrency SelectedBaseCurrency
+    {
+        get => _selectedBaseCurrency;
+        set
+        {
+            _selectedBaseCurrency = value;
+            BaseCurrency = value?.symbol;
             OnPropertyChanged();
         }
     }
+
+    private CryptoCurrency _selectedTargetCurrency;
+    public CryptoCurrency SelectedTargetCurrency
+    {
+        get => _selectedTargetCurrency;
+        set
+        {
+            _selectedTargetCurrency = value;
+            TargetCurrency = value?.symbol;
+            OnPropertyChanged();
+        }
+    }
+
 
     private decimal _amountToConvert;
     public decimal AmountToConvert
@@ -71,7 +102,7 @@ public class HomeViewModel : INotifyPropertyChanged
     private async void LoadTopCryptos()
     {
         var cryptos = await _service.GetCryptoCurrenciesAsync();
-        Cryptos.Clear(); // Очистка перед додаванням нових даних
+        Cryptos.Clear();
         foreach (var crypto in cryptos)
         {
             Cryptos.Add(crypto);
@@ -86,17 +117,31 @@ public class HomeViewModel : INotifyPropertyChanged
             return;
         }
 
+        if (BaseCurrency == TargetCurrency)
+        {
+            MessageBox.Show("Base and target currencies cannot be the same. Please choose different currencies.", 
+                "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
+            return;
+        }
+        
         var baseCurrency = Cryptos.FirstOrDefault(c => c.symbol.Equals(BaseCurrency, StringComparison.OrdinalIgnoreCase));
         var targetCurrency = Cryptos.FirstOrDefault(c => c.symbol.Equals(TargetCurrency, StringComparison.OrdinalIgnoreCase));
-
+        
         if (baseCurrency == null || targetCurrency == null)
         {
             MessageBox.Show("Selected currency not found in the top 10 list.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             return;
         }
-
-        ConversionResult = (AmountToConvert * baseCurrency.priceUsd) / targetCurrency.priceUsd;
+        
+        if (baseCurrency.priceUsd <= 0 || targetCurrency.priceUsd <= 0)
+        {
+            MessageBox.Show("Price data for the selected currencies is invalid.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            return;
+        }
+        
+        ConversionResult = Math.Round((AmountToConvert * baseCurrency.priceUsd) / targetCurrency.priceUsd, 2);
     }
+
 
     public event PropertyChangedEventHandler PropertyChanged;
     protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)

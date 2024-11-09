@@ -1,6 +1,7 @@
 ﻿<Window
     Background="{DynamicResource PageBackground}"
-    Height="600"
+    Height="700"
+    ResizeMode="NoResize"
     Title="Home"
     Width="700"
     mc:Ignorable="d"
@@ -19,63 +20,87 @@
         <StackPanel Orientation="Horizontal">
             <StackPanel Width="350">
                 <Label
-                    Content="{x:Static p:Languages.logoText}"
+                    Content="CryptoInfo"
                     FontSize="30"
                     Foreground="{DynamicResource LabelColor}" />
             </StackPanel>
-            <StackPanel Width="350">
-                <ToggleButton
-                    Checked="ToggleButton_OnChecked"
-                    Height="25"
-                    IsChecked="True"
-                    Unchecked="ToggleButton_OnChecked"
-                    Width="50">
-                    <ToggleButton.Template>
-                        <ControlTemplate>
-                            <Border
-                                BorderBrush="White"
-                                BorderThickness="1"
-                                CornerRadius="10"
-                                Height="25"
-                                Width="50"
-                                x:Name="SwitchBorder">
+            <StackPanel Width="325">
+                <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                    <TextBlock
+                        Foreground="{DynamicResource LabelColor}"
+                        Margin="3,0"
+                        Text="{x:Static p:Languages.ThemeToggleText}"
+                        VerticalAlignment="Center" />
+                    <ToggleButton
+                        Checked="ToggleButton_OnChecked"
+                        Height="25"
+                        IsChecked="True"
+                        Margin="0,2"
+                        Unchecked="ToggleButton_OnChecked"
+                        Width="50">
+                        <ToggleButton.Template>
+                            <ControlTemplate>
                                 <Border
-                                    Background="White"
+                                    Background="Gray"
+                                    BorderBrush="LightGray"
+                                    BorderThickness="1"
                                     CornerRadius="10"
-                                    Height="15"
-                                    HorizontalAlignment="Right"
-                                    Margin="4,0"
-                                    Width="15"
-                                    x:Name="SwitchShape">
-                                    <Border.Effect>
-                                        <DropShadowEffect Opacity="0.8" />
-                                    </Border.Effect>
+                                    Height="25"
+                                    Width="50"
+                                    x:Name="SwitchBorder">
+                                    <Border
+                                        Background="White"
+                                        CornerRadius="10"
+                                        Height="15"
+                                        HorizontalAlignment="Right"
+                                        Margin="4,0"
+                                        Width="15"
+                                        x:Name="SwitchShape">
+                                        <Border.Effect>
+                                            <DropShadowEffect Opacity="0.8" />
+                                        </Border.Effect>
+                                    </Border>
                                 </Border>
-                            </Border>
-                            <ControlTemplate.Triggers>
-                                <Trigger Property="ToggleButton.IsChecked" Value="True">
-                                    <Setter Property="HorizontalAlignment" TargetName="SwitchShape" Value="Right" />
-                                    <Setter Property="Background" TargetName="SwitchShape" Value="CornflowerBlue" />
-                                </Trigger>
-                                <Trigger Property="ToggleButton.IsChecked" Value="False">
-                                    <Setter Property="HorizontalAlignment" TargetName="SwitchShape" Value="Left" />
-                                </Trigger>
-                            </ControlTemplate.Triggers>
-                        </ControlTemplate>
-                    </ToggleButton.Template>
-                </ToggleButton>
-                <ComboBox
-                    Name="LanguageBox"
-                    SelectionChanged="Selector_OnSelectionChanged"
-                    Width="50">
-                    <ComboBoxItem Content="EN" Tag="en" />
-                    <ComboBoxItem Content="UA" Tag="ua" />
-                </ComboBox>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="ToggleButton.IsChecked" Value="True">
+                                        <Setter Property="HorizontalAlignment" TargetName="SwitchShape" Value="Right" />
+                                        <Setter Property="Background" TargetName="SwitchShape" Value="LightGreen" />
+                                    </Trigger>
+                                    <Trigger Property="ToggleButton.IsChecked" Value="False">
+                                        <Setter Property="HorizontalAlignment" TargetName="SwitchShape" Value="Left" />
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </ToggleButton.Template>
+                    </ToggleButton>
+                </StackPanel>
+
+                <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                    <TextBlock
+                        Foreground="{DynamicResource LabelColor}"
+                        Margin="3,0"
+                        Text="{x:Static p:Languages.LanguageBoxText}"
+                        VerticalAlignment="Center" />
+                    <ComboBox
+                        HorizontalAlignment="Right"
+                        Name="LanguageBox"
+                        SelectionChanged="Selector_OnSelectionChanged"
+                        Width="50">
+                        <ComboBoxItem
+                            Content="{}"
+                            IsEnabled="False"
+                            IsSelected="True"
+                            x:Name="ComboBoxItem" />
+                        <ComboBoxItem Content="EN" Tag="en" />
+                        <ComboBoxItem Content="UA" Tag="ua" />
+                    </ComboBox>
+                </StackPanel>
             </StackPanel>
             <StackPanel />
         </StackPanel>
         <Frame
             Grid.Row="1"
+            HorizontalContentAlignment="Center"
             NavigationUIVisibility="Hidden"
             x:Name="MainFrame" />
     </Grid>

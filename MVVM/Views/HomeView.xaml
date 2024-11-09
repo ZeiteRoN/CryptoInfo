@@ -1,5 +1,5 @@
 <Page
-    Height="400"
+    Height="700"
     Title="Home"
     Width="600"
     mc:Ignorable="d"
@@ -14,28 +14,72 @@
         <Style TargetType="TextBlock">
             <Setter Property="Foreground" Value="{DynamicResource LabelColor}" />
         </Style>
+        <Style TargetType="GridViewColumnHeader">
+            <Setter Property="Width" Value="150" />
+            <Setter Property="Foreground" Value="Chocolate" />
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="IsEnabled" Value="False" />
+        </Style>
     </Page.Resources>
-    <StackPanel Margin="20,0,20,20">
+    <StackPanel>
         <StackPanel>
             <TextBlock FontSize="24" HorizontalAlignment="Center" />
             <Button
                 Click="NavigateToSearchPage_Click"
-                Content="Search currency"
+                Content="{x:Static p:Languages.SearchButton}"
                 Margin="0,20"
                 Width="200" />
             <ListView
                 Background="{DynamicResource PageBackground}"
                 BorderThickness="0"
-                ItemsSource="{Binding Cryptos}">
+                HorizontalAlignment="Center"
+                ItemsSource="{Binding Cryptos}"
+                Width="600">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn DisplayMemberBinding="{Binding rank}" Header="Rank" />
-                        <GridViewColumn DisplayMemberBinding="{Binding symbol}" Header="Symbol" />
-                        <GridViewColumn DisplayMemberBinding="{Binding name}" Header="Name" />
-                        <GridViewColumn DisplayMemberBinding="{Binding priceUsd}" Header="Price (USD)" />
+                        <GridViewColumn DisplayMemberBinding="{Binding rank}" Header="{x:Static p:Languages.DataRank}" />
+                        <GridViewColumn DisplayMemberBinding="{Binding symbol}" Header="{x:Static p:Languages.DataSymbol}" />
+                        <GridViewColumn DisplayMemberBinding="{Binding name}" Header="{x:Static p:Languages.DataName}" />
+                        <GridViewColumn DisplayMemberBinding="{Binding priceUsd}" Header="{x:Static p:Languages.DataPrice}" />
                     </GridView>
                 </ListView.View>
             </ListView>
         </StackPanel>
+        <StackPanel Margin="20">
+            <TextBlock
+                FontSize="24"
+                HorizontalAlignment="Center"
+                Margin="0,10"
+                Text="{x:Static p:Languages.ConvertationHeader}" />
+            <ComboBox
+                DisplayMemberPath="symbol"
+                ItemsSource="{Binding Cryptos}"
+                Margin="0,10"
+                SelectedItem="{Binding SelectedBaseCurrency, UpdateSourceTrigger=PropertyChanged}"
+                Width="200" />
+            <ComboBox
+                DisplayMemberPath="symbol"
+                ItemsSource="{Binding Cryptos}"
+                Margin="0,10"
+                SelectedItem="{Binding SelectedTargetCurrency, UpdateSourceTrigger=PropertyChanged}"
+                Width="200" />
+            <TextBox
+                Margin="0,10"
+                Text="{Binding AmountToConvert, UpdateSourceTrigger=PropertyChanged}"
+                Width="200" />
+            <Button
+                Command="{Binding ConvertCurrencyCommand}"
+                Content="{x:Static p:Languages.ConvertationButtonText}"
+                Margin="0,10"
+                Width="100" />
+
+            <TextBlock
+                FontWeight="Bold"
+                Margin="0,10"
+                Text="{x:Static p:Languages.ConvertationResult}" />
+            <TextBlock FontSize="18" Text="{Binding ConversionResult, StringFormat={}{0:F2}}" />
+        </StackPanel>
     </StackPanel>
+
 </Page>

@@ -1,4 +1,5 @@
-﻿using System.Globalization;
+﻿using System.Diagnostics;
+using System.Globalization;
 using System.Resources;
 using System.Text;
 using System.Windows;
@@ -39,10 +40,14 @@ namespace CryptoInfo
         }
 
         private void Selector_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (LanguageBox.SelectedIndex == 0) Properties.Settings.Default.languageCode = "en-US";
-            else Properties.Settings.Default.languageCode = "uk-UA";
+        {    string cultureCode = LanguageBox.SelectedIndex == 0 ? "en-US" : "uk-UA";
+            Properties.Settings.Default.languageCode = cultureCode;
+            ComboBoxItem.Content = cultureCode.Remove(0,3);
             Properties.Settings.Default.Save();
+            
+            string applicationPath = Process.GetCurrentProcess().MainModule.FileName;
+            Process.Start(applicationPath);
+            Application.Current.Shutdown();
         }
     }
 }

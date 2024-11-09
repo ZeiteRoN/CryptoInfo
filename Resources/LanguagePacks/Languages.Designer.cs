@@ -21,7 +21,7 @@ namespace CryptoInfo.Resources.LanguagePacks {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Languages {
+    public class Languages {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -35,7 +35,7 @@ namespace CryptoInfo.Resources.LanguagePacks {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("CryptoInfo.Resources.LanguagePacks.Languages", typeof(Languages).Assembly);
@@ -50,7 +50,7 @@ namespace CryptoInfo.Resources.LanguagePacks {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -60,11 +60,155 @@ namespace CryptoInfo.Resources.LanguagePacks {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Back.
+        /// </summary>
+        public static string BackButton {
+            get {
+                return ResourceManager.GetString("BackButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Base.
+        /// </summary>
+        public static string BaseSymbolHeader {
+            get {
+                return ResourceManager.GetString("BaseSymbolHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Convert.
+        /// </summary>
+        public static string ConvertationButtonText {
+            get {
+                return ResourceManager.GetString("ConvertationButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Convert Currency.
+        /// </summary>
+        public static string ConvertationHeader {
+            get {
+                return ResourceManager.GetString("ConvertationHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Conversion result:.
+        /// </summary>
+        public static string ConvertationResult {
+            get {
+                return ResourceManager.GetString("ConvertationResult", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        public static string DataName {
+            get {
+                return ResourceManager.GetString("DataName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Price (USD).
+        /// </summary>
+        public static string DataPrice {
+            get {
+                return ResourceManager.GetString("DataPrice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to rank.
+        /// </summary>
+        public static string DataRank {
+            get {
+                return ResourceManager.GetString("DataRank", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Symbol.
+        /// </summary>
+        public static string DataSymbol {
+            get {
+                return ResourceManager.GetString("DataSymbol", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Exchange.
+        /// </summary>
+        public static string ExchangeHeader {
+            get {
+                return ResourceManager.GetString("ExchangeHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Top 10 Currencies.
         /// </summary>
-        public static string logoText {
+        public static string HomeHeader {
             get {
-                return ResourceManager.GetString("logoText", resourceCulture);
+                return ResourceManager.GetString("HomeHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Language.
+        /// </summary>
+        public static string LanguageBoxText {
+            get {
+                return ResourceManager.GetString("LanguageBoxText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Search.
+        /// </summary>
+        public static string SearchButton {
+            get {
+                return ResourceManager.GetString("SearchButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Search Currency.
+        /// </summary>
+        public static string SearchHeader {
+            get {
+                return ResourceManager.GetString("SearchHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dark theme.
+        /// </summary>
+        public static string ThemeToggleText {
+            get {
+                return ResourceManager.GetString("ThemeToggleText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Volume24Hr.
+        /// </summary>
+        public static string Volume24HrHeader {
+            get {
+                return ResourceManager.GetString("Volume24HrHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Volume Percent.
+        /// </summary>
+        public static string VolumePercentHeader {
+            get {
+                return ResourceManager.GetString("VolumePercentHeader", resourceCulture);
             }
         }
     }

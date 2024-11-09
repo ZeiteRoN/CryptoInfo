@@ -10,6 +10,9 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Resources/Themes/LightTheme.xaml" />
                 <ResourceDictionary Source="Resources/Themes/DarkTheme.xaml" />
+                <ResourceDictionary Source="Resources/Designs/SearchButtonDesign.xaml" />
+                <ResourceDictionary Source="Resources/Designs/BackButtonDesign.xaml" />
+                <ResourceDictionary Source="Resources/Designs/ButtonBorderDesign.xaml" />
             </ResourceDictionary.MergedDictionaries>
             <commands:NullToVisibilityConverter x:Key="NullToVisibilityConverter" />
         </ResourceDictionary>

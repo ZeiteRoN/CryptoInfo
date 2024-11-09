@@ -18,7 +18,55 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-    <data name="logoText" xml:space="preserve">
+    <data name="HomeHeader" xml:space="preserve">
         <value>Top 10 Currencies</value>
+    </data>
+    <data name="SearchButton" xml:space="preserve">
+        <value>Search</value>
+    </data>
+    <data name="DataRank" xml:space="preserve">
+        <value>rank</value>
+    </data>
+    <data name="DataSymbol" xml:space="preserve">
+        <value>Symbol</value>
+    </data>
+    <data name="DataName" xml:space="preserve">
+        <value>Name</value>
+    </data>
+    <data name="DataPrice" xml:space="preserve">
+        <value>Price (USD)</value>
+    </data>
+    <data name="BackButton" xml:space="preserve">
+        <value>Back</value>
+    </data>
+    <data name="SearchHeader" xml:space="preserve">
+        <value>Search Currency</value>
+    </data>
+    <data name="ExchangeHeader" xml:space="preserve">
+        <value>Exchange</value>
+    </data>
+    <data name="BaseSymbolHeader" xml:space="preserve">
+        <value>Base</value>
+    </data>
+    <data name="Volume24HrHeader" xml:space="preserve">
+        <value>Volume24Hr</value>
+    </data>
+    <data name="VolumePercentHeader" xml:space="preserve">
+        <value>Volume Percent</value>
+    </data>
+    <data name="ThemeToggleText" xml:space="preserve">
+        <value>Dark theme</value>
+    </data>
+    <data name="LanguageBoxText" xml:space="preserve">
+        <value>Language</value>
+    </data>
+    <data name="ConvertationResult" xml:space="preserve">
+        <value>Conversion result:</value>
+    </data>
+    <data name="ConvertationHeader" xml:space="preserve">
+        <value>Convert Currency</value>
+    </data>
+    <data name="ConvertationButtonText" xml:space="preserve">
+        <value>Convert</value>
     </data>
 </root>

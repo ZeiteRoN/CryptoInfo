@@ -1,59 +1,115 @@
 <Page
-    Height="400"
+    Height="700"
     Title="Currency Info"
-    Width="800"
+    Width="700"
     mc:Ignorable="d"
     x:Class="CryptoInfo.MVVM.Views.SearchPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:CryptoInfo.MVVM.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:p="clr-namespace:CryptoInfo.Resources.LanguagePacks"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Page.Resources>
         <Style TargetType="GridViewColumnHeader">
-            <Setter Property="Width" Value="153" />
+            <Setter Property="Width" Value="140" />
+            <Setter Property="Foreground" Value="Chocolate" />
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="IsEnabled" Value="False" />
         </Style>
+        <Style TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{DynamicResource LabelColor}" />
+        </Style>
+        <Style TargetType="Button" />
     </Page.Resources>
-    <StackPanel>
-        <StackPanel>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="40" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="170" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Border Style="{StaticResource ButtonBorder}">
             <Button
                 Click="NavigateToMainPage_Click"
-                Content="Back"
+                Content="{x:Static p:Languages.BackButton}"
                 HorizontalAlignment="Left"
-                Width="32" />
-            <TextBlock
-                FontSize="24"
-                Foreground="{DynamicResource LabelColor}"
-                HorizontalAlignment="Center"
-                Text="Search Cryptocurrency" />
-        </StackPanel>
-        <TextBox
-            Margin="0,10"
-            Text="{Binding SearchQuery, UpdateSourceTrigger=PropertyChanged}"
-            Width="200" />
-        <Button
-            Command="{Binding SearchCommand}"
-            Content="Search"
-            Margin="0,10"
-            Width="100" />
+                Style="{StaticResource SearchButton}" />
+        </Border>
+        <TextBlock
+            FontSize="20"
+            Grid.Row="1"
+            HorizontalAlignment="Center"
+            Text="{x:Static p:Languages.SearchHeader}" />
 
-        <StackPanel DataContext="{Binding SelectedCryptocurrency}" Visibility="{Binding SelectedCryptocurrency, Converter={StaticResource NullToVisibilityConverter}}">
-            <TextBlock FontWeight="Bold" Text="Name: " />
-            <TextBlock Text="{Binding name}" />
-            <TextBlock FontWeight="Bold" Text="Price (USD): " />
-            <TextBlock Text="{Binding priceUsd}" />
-            <TextBlock Text="{Binding markets}" />
+        <StackPanel
+            Grid.Row="2"
+            HorizontalAlignment="Center"
+            Margin="0,2"
+            Orientation="Horizontal">
+            <TextBox
+                Height="30"
+                HorizontalAlignment="Center"
+                Text="{Binding SearchQuery, UpdateSourceTrigger=PropertyChanged}"
+                Width="150" />
+
+            <Border
+                Background="LightBlue"
+                CornerRadius="0 10 10 0 "
+                Height="30">
+                <Button
+                    Command="{Binding SearchCommand}"
+                    Content="{x:Static p:Languages.SearchButton}"
+                    HorizontalAlignment="Center"
+                    Style="{StaticResource SearchButton}" />
+            </Border>
         </StackPanel>
-        <ListView ItemsSource="{Binding Markets}">
+
+        <StackPanel
+            DataContext="{Binding SelectedCryptocurrency}"
+            Grid.Row="4"
+            Orientation="Vertical"
+            Visibility="{Binding SelectedCryptocurrency, Converter={StaticResource NullToVisibilityConverter}}">
+            <TextBlock FontWeight="Bold" Text="{x:Static p:Languages.DataName}" />
+            <TextBlock Text="{Binding name}" />
+            <TextBlock FontWeight="Bold" Text="{x:Static p:Languages.DataPrice}" />
+            <TextBlock Text="{Binding priceUsd}" />
+        </StackPanel>
+        <ListView
+            Background="Transparent"
+            BorderThickness="0"
+            Grid.Row="5"
+            HorizontalAlignment="Left"
+            ItemsSource="{Binding Markets}"
+            Width="700">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn DisplayMemberBinding="{Binding exchangeId}" Header="Exchange" />
-                    <GridViewColumn DisplayMemberBinding="{Binding baseSymbol}" Header="Base" />
-                    <GridViewColumn DisplayMemberBinding="{Binding volumeUsd24Hr}" Header="Volume24Hr" />
-                    <GridViewColumn DisplayMemberBinding="{Binding priceUsd, StringFormat={}{0:C}}" Header="Price (USD)" />
-                    <GridViewColumn DisplayMemberBinding="{Binding volumePercent}" Header="Volume Percent" />
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding exchangeId}"
+                        Header="{x:Static p:Languages.ExchangeHeader}"
+                        Width="140" />
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding baseSymbol}"
+                        Header="{x:Static p:Languages.BaseSymbolHeader}"
+                        Width="140" />
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding volumeUsd24Hr}"
+                        Header="{x:Static p:Languages.Volume24HrHeader}"
+                        Width="140" />
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding priceUsd, StringFormat={}{0:C}}"
+                        Header="{x:Static p:Languages.DataPrice}"
+                        Width="140" />
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding volumePercent}"
+                        Header="{x:Static p:Languages.VolumePercentHeader}"
+                        Width="120" />
                 </GridView>
             </ListView.View>
         </ListView>
-    </StackPanel>
+    </Grid>
 </Page>
