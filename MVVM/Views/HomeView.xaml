@@ -79,11 +79,12 @@
                 HorizontalAlignment="Center"
                 Margin="0,10"
                 Style="{StaticResource ButtonBorder}"
-                Width="60">
+                Width="100">
                 <Button
                     Command="{Binding ConvertCurrencyCommand}"
                     Content="{x:Static p:Languages.ConvertationButtonText}"
-                    Style="{StaticResource SearchPageButton}" />
+                    Style="{StaticResource SearchPageButton}"
+                    Width="100" />
             </Border>
 
             <StackPanel Orientation="Horizontal">
