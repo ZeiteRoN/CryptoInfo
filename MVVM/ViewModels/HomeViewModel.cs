@@ -6,6 +6,7 @@ using System.Windows.Input;
 using CryptoInfo.Models;
 using CryptoInfo.MVVM.Commands;
 using CryptoInfo.Services;
+using CryptoInfo.Resources.LanguagePacks;
 
 namespace CryptoInfo.ViewModels
 {

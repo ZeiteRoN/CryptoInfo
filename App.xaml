@@ -13,6 +13,7 @@
                 <ResourceDictionary Source="Resources/Designs/SearchButtonDesign.xaml" />
                 <ResourceDictionary Source="Resources/Designs/BackButtonDesign.xaml" />
                 <ResourceDictionary Source="Resources/Designs/ButtonBorderDesign.xaml" />
+                <ResourceDictionary Source="Resources/Designs/SearchPageButton.xaml" />
             </ResourceDictionary.MergedDictionaries>
             <commands:NullToVisibilityConverter x:Key="NullToVisibilityConverter" />
         </ResourceDictionary>

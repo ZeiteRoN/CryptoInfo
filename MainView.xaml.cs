@@ -40,11 +40,11 @@ namespace CryptoInfo
         }
 
         private void Selector_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
-        {    string cultureCode = LanguageBox.SelectedIndex == 0 ? "en-US" : "uk-UA";
-            Properties.Settings.Default.languageCode = cultureCode;
-            ComboBoxItem.Content = cultureCode.Remove(0,3);
+        {   
+            if (LanguageBox.SelectedIndex == 0) Properties.Settings.Default.languageCode = "en-US";
+            else Properties.Settings.Default.languageCode = "uk-UA";
             Properties.Settings.Default.Save();
-            
+
             string applicationPath = Process.GetCurrentProcess().MainModule.FileName;
             Process.Start(applicationPath);
             Application.Current.Shutdown();

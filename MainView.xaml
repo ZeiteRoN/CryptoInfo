@@ -86,11 +86,6 @@
                         Name="LanguageBox"
                         SelectionChanged="Selector_OnSelectionChanged"
                         Width="50">
-                        <ComboBoxItem
-                            Content="{}"
-                            IsEnabled="False"
-                            IsSelected="True"
-                            x:Name="ComboBoxItem" />
                         <ComboBoxItem Content="EN" Tag="en" />
                         <ComboBoxItem Content="UA" Tag="ua" />
                     </ComboBox>
